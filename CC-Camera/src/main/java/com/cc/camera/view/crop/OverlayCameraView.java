@@ -42,7 +42,7 @@ public class OverlayCameraView extends View {
     /**
      * 拐角线长度
      */
-    private int cornerLength = DimensionUtil.dpToPx(18);
+    private int cornerLength = DimensionUtil.dpToPx(16);
 
     /**
      * 拐角线的宽度
@@ -53,6 +53,16 @@ public class OverlayCameraView extends View {
      * 遮罩层背景色
      */
     private int maskColor = Color.argb(180, 0, 0, 0);
+
+    /**
+     * 拐角线的颜色
+     */
+    private int cornerColor = Color.WHITE;
+
+    /**
+     * 取景框边线的颜色值
+     */
+    private int borderColor = Color.TRANSPARENT;
 
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private Paint eraser = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -96,11 +106,19 @@ public class OverlayCameraView extends View {
         this.fixed = fixed;
     }
 
+    public void setCornerColor(int cornerColor) {
+        this.cornerColor = cornerColor;
+    }
+
+    public void setBorderColor(int borderColor) {
+        this.borderColor = borderColor;
+    }
+
     private OnFrameChangeListener onFrameChangeListener;
 
     {
         setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-        paint.setColor(Color.WHITE);
+        paint.setColor(cornerColor);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(6);
 
@@ -125,10 +143,12 @@ public class OverlayCameraView extends View {
     private void resetFrameRect(int w, int h) {
         if (overlayView  !=  null){
             frameRect = overlayView.getCameraRectF(w, h);
+            setCornerColor(overlayView.getCornerColor());
+            setBorderColor(overlayView.getBorderColor());
         }
     }
 
-    private IOverlayView overlayView = new SquareOverlayView();
+    private IOverlayView overlayView = new RectangleOverlayView();
 
     public void setOverlayView(@NonNull IOverlayView overlayView) {
         this.overlayView = overlayView;
@@ -165,6 +185,7 @@ public class OverlayCameraView extends View {
 
         canvas.drawColor(maskColor);
 
+        paint.setColor(borderColor);
         paint.setStrokeWidth(DimensionUtil.dpToPx(1));
         canvas.drawRect(frameRect, paint);
         canvas.drawRect(frameRect, eraser);
@@ -172,6 +193,7 @@ public class OverlayCameraView extends View {
     }
 
     private void drawCorners(Canvas canvas) {
+        paint.setColor(cornerColor);
         paint.setStrokeWidth(cornerLineWidth);
         // left top
         drawLine(canvas, frameRect.left - cornerLineWidth / 2, frameRect.top, cornerLength, 0);

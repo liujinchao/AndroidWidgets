@@ -27,6 +27,13 @@
         android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="获取当前时间"/>
+        android:text="获取当前计时器数据"/>
+
+    <Button
+        android:id="@+id/btn_camera"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="跳转至拍照页"/>
 
 </LinearLayout>

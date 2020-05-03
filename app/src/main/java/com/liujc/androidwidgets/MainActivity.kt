@@ -1,8 +1,7 @@
 package com.liujc.androidwidgets
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.support.v7.app.AppCompatActivity
 import com.cc.countdownview.BaseCountDownView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -23,11 +22,10 @@ class MainActivity : AppCompatActivity() {
 
                 })
                 .start(100000000)
-        current_time.setOnClickListener(object : View.OnClickListener{
-            override fun onClick(v: View?) {
-                show_msg.text = "${dhms_count_down.getDay()} - ${dhms_count_down.getHour()} - ${dhms_count_down.getMinute()} - ${dhms_count_down.getSecond()} - ${dhms_count_down.getMilliSecond()}"
-            }
+        current_time.setOnClickListener { show_msg.text = "${dhms_count_down.getDay()} - ${dhms_count_down.getHour()} - ${dhms_count_down.getMinute()} - ${dhms_count_down.getSecond()} - ${dhms_count_down.getMilliSecond()}" }
 
-        })
+        btn_camera.setOnClickListener{
+            CameraActivity.intentTo(this)
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.cc.camera.view.crop;
 
+import android.graphics.Color;
 import android.graphics.RectF;
 
 /**
@@ -17,5 +18,15 @@ public class SquareOverlayView implements IOverlayView {
         frameRect.right = w - frameRect.left;
         frameRect.bottom = frameRect.top + frameRect.right - frameRect.left;
         return frameRect;
+    }
+
+    @Override
+    public int getCornerColor() {
+        return Color.WHITE;
+    }
+
+    @Override
+    public int getBorderColor() {
+        return Color.WHITE;
     }
 }

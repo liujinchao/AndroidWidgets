@@ -1,8 +1,13 @@
 package com.cc.camera.view.utils;
 
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.ExifInterface;
+import android.util.Base64;
 import android.util.Log;
+
+import java.io.ByteArrayOutputStream;
+import java.net.URLEncoder;
 
 public class ImageUtil {
     private static final String TAG = "CameraExif";
@@ -159,5 +164,24 @@ public class ImageUtil {
         }
 
         return inSampleSize;
+    }
+
+    /**
+     * Bitmap 转 Base64
+     * @param bitmap
+     * @return
+     */
+    public static String bitmapToString(Bitmap bitmap) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] bytes = baos.toByteArray();
+        return Base64.encodeToString(bytes, Base64.DEFAULT);
+    }
+
+    /**
+     * bitmap转base64之后进行encoder操作
+     */
+    public static String bitmapToEncodeString(Bitmap bitmap) {
+        return URLEncoder.encode(bitmapToString(bitmap));
     }
 }
