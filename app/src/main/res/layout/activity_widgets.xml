@@ -7,21 +7,6 @@
     android:orientation="vertical"
     android:gravity="center">
 
-    <TextView
-        android:id="@+id/show_msg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:textColor="@color/colorAccent" />
-
-    <com.liujc.androidwidgets.countdownview.DHMSCountDownView
-        android:id="@+id/dhms_count_down"
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-    </com.liujc.androidwidgets.countdownview.DHMSCountDownView>
-
     <Button
         android:id="@+id/current_time"
         android:layout_marginTop="20dp"
@@ -35,11 +20,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="跳转至拍照页"/>
-    <Button
-        android:id="@+id/btn_android_widget"
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="组件ui测试"/>
 
 </LinearLayout>

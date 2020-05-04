@@ -27,5 +27,9 @@ class MainActivity : AppCompatActivity() {
         btn_camera.setOnClickListener{
             CameraActivity.intentTo(this)
         }
+
+        btn_android_widget.setOnClickListener{
+            WidgetsActivity.intentTo(this)
+        }
     }
 }

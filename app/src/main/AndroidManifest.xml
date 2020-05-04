@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".CameraActivity" />
+        <activity android:name=".WidgetsActivity" />
     </application>
 
 </manifest>

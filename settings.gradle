@@ -1,1 +1,2 @@
 include ':app', ':countdownview', ':CC-Camera'
+include ':xwidget'
